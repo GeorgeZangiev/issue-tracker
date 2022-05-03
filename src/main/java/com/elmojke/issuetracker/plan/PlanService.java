@@ -28,8 +28,15 @@ public class PlanService {
         for (Developer developer: developers){
             tasks.put(developer.getId(), issueRepository.getNumOfTaskForDeveloper(developer.getId()));
         }
-        int freeDeveloperId = 1;
         for (Issue unassignedStory : unassignedStories) {
+            int lowestNumOfTasks = 100000;
+            int freeDeveloperId = 0;
+            for (Developer developer : developers) {
+                if (tasks.get(developer.getId()) < lowestNumOfTasks){
+                    lowestNumOfTasks = tasks.get(developer.getId());
+                    freeDeveloperId = developer.getId();
+                }
+            }
             Random random = new Random();
             int randomEstimatedPoint = random.nextInt(100) + 1;
             Issue assignedStory = Issue.builder()
@@ -44,9 +51,6 @@ public class PlanService {
                     .build();
             issueService.updateStory(unassignedStory.getId(), assignedStory);
             tasks.put(freeDeveloperId, tasks.get(freeDeveloperId) + 1);
-            if (tasks.get(freeDeveloperId) > tasks.get(developers.size()))
-                freeDeveloperId++;
-            else freeDeveloperId--;
         }
         return issueRepository.findAll();
     }
