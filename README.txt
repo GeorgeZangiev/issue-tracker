@@ -41,4 +41,6 @@ Which part I chose to leave
 
 What I would do if I had more time
 1. I would split getPlan method on small methods.
+2. Also, I would make application more secure and provide some more checks, for example we can check IssueType before
+updating bug or story.
 

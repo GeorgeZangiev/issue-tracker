@@ -2,7 +2,7 @@ package com.elmojke.issuetracker.plan;
 
 import com.elmojke.issuetracker.developer.Developer;
 import com.elmojke.issuetracker.developer.DeveloperRepository;
-import com.elmojke.issuetracker.enums.IssueStatus;
+import com.elmojke.issuetracker.enums.StoryStatus;
 import com.elmojke.issuetracker.issue.Issue;
 import com.elmojke.issuetracker.issue.IssueRepository;
 import com.elmojke.issuetracker.issue.IssueService;
@@ -46,7 +46,7 @@ public class PlanService {
                     .creationDate(unassignedStory.getCreationDate())
                     .assignedDeveloperId(freeDeveloperId)
                     .estimatedPoint(randomEstimatedPoint)
-                    .issueStatus(IssueStatus.ESTIMATED)
+                    .storyStatus(StoryStatus.ESTIMATED)
                     .storyWeek((tasks.get(freeDeveloperId) / 10) + 1)
                     .build();
             issueService.updateStory(unassignedStory.getId(), assignedStory);

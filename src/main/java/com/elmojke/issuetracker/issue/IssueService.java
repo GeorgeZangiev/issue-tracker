@@ -28,7 +28,7 @@ public class IssueService {
                 .title(request.title())
                 .description(request.description())
                 .creationDate(request.creationDate())
-                .issueStatus(request.issueStatus())
+                .storyStatus(request.storyStatus())
                 .build();
         issueRepository.save(story);
     }
@@ -44,7 +44,7 @@ public class IssueService {
                 .creationDate(request.creationDate())
                 .assignedDeveloperId(request.assignedDeveloperId())
                 .bugPriority(request.bugPriority())
-                .issueStatus(request.issueStatus())
+                .bugStatus(request.bugStatus())
                 .build();
         issueRepository.save(bug);
     }
@@ -66,7 +66,7 @@ public class IssueService {
         story.setCreationDate(storyDetails.getCreationDate());
         story.setAssignedDeveloperId(storyDetails.getAssignedDeveloperId());
         story.setEstimatedPoint(storyDetails.getEstimatedPoint());
-        story.setIssueStatus(storyDetails.getIssueStatus());
+        story.setStoryStatus(storyDetails.getStoryStatus());
         story.setStoryWeek(storyDetails.getStoryWeek());
         Issue updatedStory = issueRepository.save(story);
         return ResponseEntity.ok(updatedStory);
@@ -85,7 +85,7 @@ public class IssueService {
         bug.setCreationDate(bugDetails.getCreationDate());
         bug.setAssignedDeveloperId(bugDetails.getAssignedDeveloperId());
         bug.setBugPriority(bugDetails.getBugPriority());
-        bug.setIssueStatus(bugDetails.getIssueStatus());
+        bug.setBugStatus(bugDetails.getBugStatus());
         Issue updatedBug = issueRepository.save(bug);
         return ResponseEntity.ok(updatedBug);
     }

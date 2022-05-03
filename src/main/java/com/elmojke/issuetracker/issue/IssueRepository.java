@@ -11,6 +11,6 @@ public interface IssueRepository extends JpaRepository<Issue, Integer> {
     List<Issue> getUnassignedStories();
 
     @Query(value = "SELECT COUNT (ASSIGNED_DEVELOPER_ID) FROM ISSUE WHERE ASSIGNED_DEVELOPER_ID = ? " +
-                    "AND TYPE = 'STORY' AND ISSUE_STATUS != 'COMPLETED'", nativeQuery = true)
+                    "AND TYPE = 'STORY' AND STORY_STATUS != 'COMPLETED'", nativeQuery = true)
     Integer getNumOfTaskForDeveloper(@Param("?") Integer id);
 }

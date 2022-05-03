@@ -1,8 +1,9 @@
 package com.elmojke.issuetracker.issue;
 
 import com.elmojke.issuetracker.enums.BugPriority;
+import com.elmojke.issuetracker.enums.BugStatus;
 import com.elmojke.issuetracker.enums.IssueType;
-import com.elmojke.issuetracker.enums.IssueStatus;
+import com.elmojke.issuetracker.enums.StoryStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -38,10 +39,11 @@ public class Issue {
     private Date creationDate;
     private Integer assignedDeveloperId;
     private Integer estimatedPoint;
-    @NonNull
     @Enumerated(EnumType.STRING)
-    private IssueStatus issueStatus;
+    private StoryStatus storyStatus;
     @Enumerated(EnumType.STRING)
     private BugPriority bugPriority;
+    @Enumerated(EnumType.STRING)
+    private BugStatus bugStatus;
     private Integer storyWeek;
 }

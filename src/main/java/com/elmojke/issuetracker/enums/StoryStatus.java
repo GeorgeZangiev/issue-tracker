@@ -1,5 +1,5 @@
 package com.elmojke.issuetracker.enums;
 
-public enum IssueStatus {
+public enum StoryStatus {
     NEW, ESTIMATED, COMPLETED
 }
